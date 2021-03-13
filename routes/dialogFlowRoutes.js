@@ -1,3 +1,4 @@
+'use strict';
 
 const chatbot = require('../chatbot/chatbot');
 

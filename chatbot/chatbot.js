@@ -1,13 +1,25 @@
 'use strict'
-const dialogflow = require("dialogflow");
+const dialogflow = require('dialogflow');
 const structjson = require('./structjson');
-const config = require("../config/keys");
-const sessionClient = new dialogflow.SessionsClient();
+const config = require('../config/keys');
+
+const projectID = config.googleProjectID;
+
+const credentials = {
+    client_email: config.googleClientEmail,
+    private_key: config.googlePrivateKey
+};
+
+
+const sessionClient = new dialogflow.SessionsClient({projectID: projectID, credentials: credentials});
+
 
 const sessionPath = sessionClient.sessionPath(
     config.googleProjectID,
     config.dialogFlowSessionID
     );
+
+
 
 module.exports = {
     textQuery: async function(text, parameters = {}) {
