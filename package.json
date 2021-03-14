@@ -19,7 +19,8 @@
     "@google-cloud/storage": "^5.8.1",
     "body-parser": "^1.19.0",
     "dialogflow": "^1.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "hookrouter": "^1.2.5"
   },
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
