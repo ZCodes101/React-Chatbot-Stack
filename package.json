@@ -10,10 +10,9 @@
   "scripts": {
     "start": "node index.js",
     "backend": "nodemon index.js",
-    "frontend": "npm run front --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"",
+    "frontend": "npm run start --prefix client",
+    "dev": "concurrently \"npm run backend\"  \"npm run start --prefix client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-
   },
   "author": "Alonzo W",
   "license": "ISC",
@@ -25,7 +24,7 @@
     "express": "^4.17.1",
     "hookrouter": "^1.2.5",
     "jquery": "^3.6.0",
-    "mongoose": "^5.12.0"
+    "mongoose": "^5.11.15"
   },
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
