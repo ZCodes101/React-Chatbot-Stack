@@ -1,9 +1,7 @@
 import React from 'react';
 import ItemList from './ItemList';
 
-const Shop = () => {
-
-    return (
+const Shop = () => (
         <div>
             <h2>Shop</h2>
             <ItemList/>
@@ -12,6 +10,6 @@ const Shop = () => {
     )
 
 
-};
+
 
 export default Shop;

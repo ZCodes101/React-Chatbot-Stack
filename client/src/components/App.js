@@ -1,23 +1,55 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//import About from '/components/pages/About';
+import Header from '../Header'
 
 
-import Landing from './pages/Landing';
-import About from './pages/About';
-import Shop from './shop/Shop';
+import HeroSection from '../components/HeroSection';
+import About from '../components/pages/About';
+import Cards from '../components/pages/Cards';
+import Footer from '../components/pages/Footer';
+
+import Chatbot from '../components/chatbot/Chatbot'
 
 
-const App = () => (
-    <div>
-       <BrowserRouter>
-           <div className="container">
-             
-               <Route exact path="/" component={Landing} />
-               <Route exact path="/about" component={About} />
-               <Route exact path="/shop" component={Shop} />
-           </div>
-       </BrowserRouter>
-    </div>
-)
 
-export default App;
+
+function Home() {
+  return (
+    
+    <>
+        
+
+
+
+       <Router>
+
+
+        <Header />
+
+            <HeroSection/>
+            <About />
+          <hr/>
+          <Cards/>
+
+        <Switch>
+          <Route path='/'  />
+          <Route path='/about'  />
+          <Route path='/projects'  />
+          <Route path='/sign-up'    />
+        </Switch>         
+
+              <Footer/>
+
+      </Router>
+      <Chatbot/>
+
+
+    </>
+    
+  );
+}
+
+
+export default Home;
