@@ -30,7 +30,7 @@ function Navbar() {
       <nav className='navbarH'>
         <div className='navbar-containerH'>
           <Link to='/' className='navbar-logoH' onClick={closeMobileMenu}>
-             Alonzo Silva 
+             Alonzo Washington 
            
           </Link>
           <div className='menu-iconH' onClick={handleClick}>
