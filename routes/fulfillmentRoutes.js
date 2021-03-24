@@ -17,7 +17,6 @@ module.exports = app => {
 
             const registration = new Registration({
                 name: agent.parameters.name,
-                address: agent.parameters.address,
                 phone: agent.parameters.phone,
                 email: agent.parameters.email,
                 dateSent: Date.now()
