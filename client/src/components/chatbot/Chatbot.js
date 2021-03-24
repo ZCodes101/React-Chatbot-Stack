@@ -10,7 +10,6 @@ import QuickReplies from './QuickReplies';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import '../chatbot/Chatbot.css';
-import { Redirect } from 'react-router';
 
 
 

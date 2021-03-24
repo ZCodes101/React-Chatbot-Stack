@@ -9,7 +9,7 @@ function About() {
 <div className='cardsa'   >
 
 
-  <img src='./images/img-6.jpg' class='zo'>
+  <img src='./images/img-6.jpg' class='zo' alt="Bio Pic"> 
   </img>
 
 
