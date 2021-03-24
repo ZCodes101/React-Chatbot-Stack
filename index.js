@@ -5,15 +5,14 @@ const app = express();
 
 const config = require('./config/keys');
 const mongoose = require('mongoose');
+mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 require('./models/Registration');
-mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+require('./models/Demand');
+require('./models/Coupons');
 
 
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
-
-
 
 require('./routes/dialogFlowRoutes')(app);
 require('./routes/fulfillmentRoutes')(app);
@@ -32,6 +31,3 @@ if (process.env.NODE_ENV === 'production') {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
-
-
-

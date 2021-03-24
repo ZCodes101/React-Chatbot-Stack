@@ -1,7 +1,9 @@
 const {WebhookClient} = require('dialogflow-fulfillment');
 
 const mongoose = require('mongoose');
-
+const Demand = mongoose.model('demand');
+const Coupon = mongoose.model('coupon');
+const Registration = mongoose.model('registration');
 
 module.exports = app => {
     app.post('/', async (req, res) => {
@@ -15,6 +17,7 @@ module.exports = app => {
 
             const registration = new Registration({
                 name: agent.parameters.name,
+                address: agent.parameters.address,
                 phone: agent.parameters.phone,
                 email: agent.parameters.email,
                 dateSent: Date.now()
@@ -38,7 +41,15 @@ module.exports = app => {
                     demand.save();
                 }
             });
-  
+            let responseText = `You want to learn about ${agent.parameters.courses}. 
+                    Here is a link to all of my courses: https://www.udemy.com/user/jana-bergant`;
+
+            let coupon = await Coupon.findOne({'course': agent.parameters.courses});
+            if (coupon !== null ) {
+                responseText = `You want to learn about ${agent.parameters.courses}. 
+                Here is a link to the course: ${coupon.link}`;
+            }
+
             agent.add(responseText);
         }
 
@@ -48,7 +59,9 @@ module.exports = app => {
         }
 
         let intentMap = new Map();
-   
+        intentMap.set('snoopy', snoopy);
+        intentMap.set('learn courses', learn);
+        intentMap.set('recommend courses - yes', registration);
         intentMap.set('Default Fallback Intent', fallback);
 
         agent.handleRequest(intentMap);
