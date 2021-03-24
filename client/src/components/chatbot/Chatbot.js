@@ -38,42 +38,52 @@ class Chatbot extends Component {
         }
     }
     
-    async df_text_query (queryText) {
+    async df_text_query(text){
+        let msg;
         let says = {
-            speaks: 'user',
+
+            speaks: 'user', 
             msg: {
-                text : {
-                    text: queryText
+                text: {
+                    text: text
                 }
             }
-        }
-        this.setState({ messages: [...this.state.messages, says]});
-        const res = await axios.post('/api/df_text_query',  {text: queryText});
+        };
 
-        for (let msg of res.data.fulfillmentMessages) {
+        this.setState({messages: [...this.state.messages, says]});
+        const res = await axios.post('/api/df_text_query', {text, userID: cookies.get('userID')});
+
+        if (res.data.fulfillmentMessages) {
+            for(let i = 0; i < res.data.fulfillmentMessages.length; i++){
+                msg = res.data.fulfillmentMessages[i];
+            
             says = {
                 speaks: 'bot',
                 msg: msg
+
             }
-            this.setState({ messages: [...this.state.messages, says]});
+            this.setState({messages: [...this.state.messages, says]});
+        }
         }
     };
 
+     async df_event_query(eventName){
+        const res = await axios.post('/api/df_event_query', {event: eventName, userID: cookies.get('userID')} );
+        // eslint-disable-next-line
+        let msg, says = {};
 
-    async df_event_query(eventName) {
+        if (res.data.fulfillmentMessages) {
+            for(let i = 0; i < res.data.fulfillmentMessages.length; i++){
+                msg = res.data.fulfillmentMessages[i];
 
-        const res = await axios.post('/api/df_event_query',  {event: eventName});
-
-        for (let msg of res.data.fulfillmentMessages) {
             let says = {
                 speaks: 'bot',
                 msg: msg
             }
-
             this.setState({ messages: [...this.state.messages, says]});
         }
+    }
     };
-    
 
     resolveAfterXSeconds(x){
         // return new Promise(resolve => {
