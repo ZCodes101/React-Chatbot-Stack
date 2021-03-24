@@ -68,7 +68,7 @@ class Chatbot extends Component {
     };
 
      async df_event_query(eventName){
-        const res = await axios.post('https://obscure-hollows-17501.herokuapp.com/', {event: eventName, userID: cookies.get('userID')} );
+        const res = await axios.post('/api/df_event_query', {event: eventName, userID: cookies.get('userID')} );
         // eslint-disable-next-line
         let msg, says = {};
 
