@@ -16,8 +16,8 @@ function About() {
 <h1>A little about myself</h1>
 <p>
 My name is Alonzo. I am from Upsate NY. I enjoy martials arts and technology. My Degree is in Computer Science.
-I have a black belt in Jiu Jitsu and Taekwondo. I'm a Sci-Fi and Star Trek aficionado. Seeing what was once thought of as impossible or "sci-fi" becoming our reality is where I get my inspiration.
-The future of humanity drives my passion for creativty and learning. Feel free to ask my chat bot anything.
+I have a brown belt in Jiu Jitsu and black belt Taekwondo. I'm a Sci-Fi and Star Trek aficionado. Seeing what was once thought of as impossible or "sci-fi" becoming our reality is where I get my inspiration.
+The future of humanity drives my passion for creativty and learning. Feel free to ask my chat bot anything.It was programmed using basic NLP. 
 
 
 <table id="customers">
